@@ -1,0 +1,4 @@
+git add .
+git status
+git commit -m "setup"
+git push -u origin main

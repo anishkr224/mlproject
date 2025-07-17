@@ -1,0 +1,52 @@
+Components: Training purpose
+
+Data ingestion refers to the process of reading a dataset from various sources such as files, databases, or other data storage systems. It involves bringing external data into your application or pipeline for further processing (like data validation, data transformation).
+
+In the data ingestion phase, you not only load the dataset but also split it into training, testing, and validation sets to prepare it for model development and evaluation.
+
+Data transformation involves writing code to convert categorical features into numerical ones using techniques like one-hot encoding or label encoding. Different features may require different transformation methods based on their characteristics.
+
+In the model_trainer.py script, you'll write all the training logic, choose which models to train, and evaluate them using metrics like confusion matrix for classification or R²/adjusted R² for regression.
+After training, you'll also include a model_pusher.py script to save and push the trained model (as a pickle file) to the cloud.
+Instead of creating many separate files, we can also push the trained model (as a pickle file) to the cloud directly from the trainer script.
+
+Pipeline:
+train_pipeline.py is the main script that triggers and coordinates all the components of the ML workflow, such as data ingestion, transformation, model training, and model saving.
+predict_pipeline.py is used to make predictions on new data using the trained machine learning model.
+
+Since the entire project implementation will be happening inside this source(src), Now I will create three important files over here.
+1. logger.py is used for setting up logging to track events and debug information.
+
+# Optional test message
+if __name__ == "__main__":
+    logging.info("Logging has started")
+
+(D:\mlproject\venv) D:\mlproject>python src/logger.py
+
+2. exception.py is used to handle exceptions in a structured and reusable way across the application.
+
+To check exception.py add the following snippet in exception.py script: 
+if __name__=="__main__":
+
+    try:
+        a = 1 / 0
+    except Exception as e:
+        logging.info("Divide by zero error occurred")
+        raise CustomException(e, sys)
+
+(D:\mlproject\venv) D:\mlproject>python src/exception.py
+Traceback (most recent call last):
+  File "src/exception.py", line 43, in <module>
+    a = 1 / 0
+ZeroDivisionError: division by zero
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "src/exception.py", line 46, in <module>
+    raise CustomException(e, sys)
+__main__.CustomException: Error occurred in python script name [src/exception.py] line number [43] error message[division by zero]
+
+3. utils.py: Any common functionalities that are used across the entire application should be written in a utils.py file. This helps organize reusable code like helper functions in one place for better modularity and maintainability.
+
+
