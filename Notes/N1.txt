@@ -1,3 +1,5 @@
+Lec: 266
+
 In Anaconda prompt:
 
 (base) C:\Users\anish>D:

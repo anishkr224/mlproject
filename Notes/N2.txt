@@ -1,3 +1,5 @@
+Lec: 267
+
 Components: Training purpose
 
 Data ingestion refers to the process of reading a dataset from various sources such as files, databases, or other data storage systems. It involves bringing external data into your application or pipeline for further processing (like data validation, data transformation).

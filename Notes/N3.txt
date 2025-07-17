@@ -1,4 +1,24 @@
+Lec: 268
+
+1. EDA STUDENT PERFORMANCE.ipynb
+2. MODEL TRAINING.ipynb
+
+Download: ipykernel is required for implementing or executing any code in the Jupyter notebook.
+
+In model training, what all techniques we have specifically used; we are basically going to convert the EDA into a modular coding.
+
+During development, avoid using -e . in requirements.txt to prevent rebuilding the package repeatedly. Instead, comment it out and only uncomment it at the end when you're ready to build the final package.
+
+pip install -r requirements.txt
+
 git add .
 git status
-git commit -m "setup"
+git commit -m "EDA and Model Training"
 git push -u origin main
+
+Lec: 269
+
+data_ingestion.py
+It's important to consistently write logs throughout the project, as they help track where exceptions occur and make it easier to debug issues by identifying the exact line causing the error.
+
+(D:\mlproject\venv) D:\mlproject>python -m src.components.data_ingestion
