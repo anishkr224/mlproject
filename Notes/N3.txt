@@ -22,3 +22,10 @@ data_ingestion.py
 It's important to consistently write logs throughout the project, as they help track where exceptions occur and make it easier to debug issues by identifying the exact line causing the error.
 
 (D:\mlproject\venv) D:\mlproject>python -m src.components.data_ingestion
+
+Go to .gitignore file; in # Environments add .artifacts/
+
+git add .
+git status
+git commit -m "Data Ingestion"
+git push -u origin main
