@@ -1,0 +1,22 @@
+Lec: 270
+data_transformation.py
+
+Data ingestion: we read dataset from a source, performed a train-test split, and saved the data inside an artifact folder.
+
+Data transformation, involves feature engineering and data cleaning, such as converting categorical features into numerical features.
+
+ColumnTransformer is used to build a pipeline where you can apply multiple transformations — like one-hot encoding for categorical features and standard scaling for numerical features — in a structured and efficient way.
+
+SimpleImputer is a tool used for handling missing values in a dataset. Many machine learning algorithms don’t work well with missing data, so imputing (filling in) missing values is an essential preprocessing step.
+Common strategies: mean, median, most_frequent, constant.
+
+In utils.py, define a utility function save_object to save any Python object as a pickle file. It ensures the directory exists and uses dill to dump the object.
+
+Create a train_pipeline.py file to check data_transformation.py is properly working or not.
+
+(D:\mlproject\venv) D:\mlproject>python -m src.components.train_pipeline
+
+git add .
+git status
+git commit -m "Data Transformation"
+git push -u origin main
