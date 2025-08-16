@@ -1,4 +1,5 @@
 Lec: 270
+
 data_transformation.py
 
 Data ingestion: we read dataset from a source, performed a train-test split, and saved the data inside an artifact folder.
