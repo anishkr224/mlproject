@@ -21,3 +21,20 @@ git add .
 git status
 git commit -m "Data Transformation"
 git push -u origin main
+
+Lec: 271
+
+model_trainer.py
+
+In utils.py, define a utility function evaluate_models to trains multiple models, evaluates them on train and test datasets using R2 score, and returns a dictionary of test scores for each model.
+
+Update the train_pipeline.py file to check model_trainer.py is properly working or not.
+
+python -m src.components.train_pipeline
+
+Go to .gitignore file; in # Environments add remove .artifacts/
+
+git add .
+git status
+git commit -m "Model Trainer"
+git push -u origin main
