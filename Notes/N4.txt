@@ -32,9 +32,16 @@ Update the train_pipeline.py file to check model_trainer.py is properly working 
 
 python -m src.components.train_pipeline
 
-Go to .gitignore file; in # Environments add remove .artifacts/
+Go to .gitignore file; in # Environments remove .artifacts/
 
 git add .
 git status
 git commit -m "Model Trainer"
 git push -u origin main
+
+Lec: 272
+
+Model Hyperparameter Tuning Implementation
+
+Implemented hyperparameter tuning by integrating parameter grids for multiple machine learning algorithms.
+Utilized GridSearchCV from scikit-learn to perform cross-validated parameter search.

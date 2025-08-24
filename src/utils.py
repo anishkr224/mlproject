@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.metrics import r2_score
+from sklearn.model_selection import GridSearchCV
 from src.exception import CustomException
 
 # Function: save_object
@@ -28,39 +29,43 @@ def save_object(file_path, obj):
         raise CustomException(e, sys)
 
 # Function: evaluate_models
-def evaluate_models(X_train, y_train, X_test, y_test, models):
+def evaluate_models(X_train, y_train, X_test, y_test, models, param):
     """
-    Trains multiple models, evaluates them on train and test datasets using R2 score,
-    and returns a dictionary of test scores for each model.
-    
-    Parameters:
-        X_train, y_train: Training data
-        X_test, y_test: Testing data
-        models: Dictionary of model_name: model_instance
-    Returns:
-        report: Dictionary of {model_name: test_r2_score}
+    Trains multiple models using GridSearchCV, evaluates them on train and test datasets using R2 score,
+    and returns:
+      - report: {model_name: test_r2_score}
+      - trained_models: {model_name: trained_model_instance}
     """
     try:
-        report = {}  # To store the test scores
+        report = {}          # To store test scores
+        trained_models = {}  # To store trained models
 
         # Iterate over all models in the dictionary
-        for i in range(len(list(models))):
-            model = list(models.values())[i]          # Get model instance
-            model_name = list(models.keys())[i]       # Get model name
+        for model_name, model in models.items():
+            para = param.get(model_name, {})  # Get hyperparameters for this model
 
-            model.fit(X_train, y_train)               # Train the model
+            # Perform GridSearchCV for hyperparameter tuning
+            gs = GridSearchCV(model, para, cv=3, scoring="r2", n_jobs=-1, verbose=0)
+            gs.fit(X_train, y_train)
 
-            y_train_pred = model.predict(X_train)    # Predict on training data
-            y_test_pred = model.predict(X_test)      # Predict on test data
+            # Best estimator from grid search (already fitted on training data)
+            best_model = gs.best_estimator_
+
+            # model.fit(X_train, y_train)                 # Train the model
+
+            # Predictions
+            y_train_pred = best_model.predict(X_train)
+            y_test_pred = best_model.predict(X_test)
 
             # Compute R2 scores
             train_model_score = r2_score(y_train, y_train_pred)
             test_model_score = r2_score(y_test, y_test_pred)
 
-            # Store test score in the report dictionary
+            # Save results
             report[model_name] = test_model_score
+            trained_models[model_name] = best_model
 
-        return report  # Return dictionary of model scores
+        return report, trained_models
 
     except Exception as e:
         raise CustomException(e, sys)
