@@ -25,7 +25,7 @@ from src.utils import save_object
 @dataclass
 class DataTransformationConfig:
     # File path where the preprocessor object will be saved
-    preprocessor_obj_file_path = os.path.join('artifacts', "proprocessor.pkl")
+    preprocessor_obj_file_path = os.path.join('artifacts', "preprocessor.pkl")
 
 # Main class responsible for performing data transformation
 class DataTransformation:

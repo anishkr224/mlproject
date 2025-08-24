@@ -13,9 +13,9 @@ Common strategies: mean, median, most_frequent, constant.
 
 In utils.py, define a utility function save_object to save any Python object as a pickle file. It ensures the directory exists and uses dill to dump the object.
 
-Create a train_pipeline.py file to check data_transformation.py is properly working or not.
+src\pipeline\train_pipeline.py file to check data_transformation.py is properly working or not.
 
-(D:\mlproject\venv) D:\mlproject>python -m src.components.train_pipeline
+(D:\mlproject\venv) D:\mlproject>python -m src.pipeline.train_pipeline
 
 git add .
 git status
@@ -30,7 +30,7 @@ In utils.py, define a utility function evaluate_models to trains multiple models
 
 Update the train_pipeline.py file to check model_trainer.py is properly working or not.
 
-python -m src.components.train_pipeline
+python -m src.pipeline.train_pipeline
 
 Go to .gitignore file; in # Environments remove .artifacts/
 
@@ -43,5 +43,32 @@ Lec: 272
 
 Model Hyperparameter Tuning Implementation
 
-Implemented hyperparameter tuning by integrating parameter grids for multiple machine learning algorithms.
-Utilized GridSearchCV from scikit-learn to perform cross-validated parameter search.
+In model_trainer.py: Implemented hyperparameter tuning by integrating parameter grids for multiple machine learning algorithms.
+In evaluate_models function: Utilized GridSearchCV from scikit-learn to perform cross-validated parameter search.
+
+python -m src.pipeline.train_pipeline
+
+git add .
+git status
+git commit -m "Hyperparameter tuning done"
+git push -u origin main
+
+Lec: 273
+
+Building Prediction Pipeline
+
+src\pipeline\predict_pipeline.py : To capture user input features and make predictions on input features.
+In utils.py, define a utility function load_object to loads a Python object from the given file path using dill.
+
+app.py : Flask based web application.
+templates\index.html
+templates\home.html
+
+python app.py
+
+http://127.0.0.1:5000/predictdata
+
+git add .
+git status
+git commit -m "Prediction pipeline done"
+git push -u origin main
