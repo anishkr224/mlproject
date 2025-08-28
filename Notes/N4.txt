@@ -11,7 +11,7 @@ option_settings:
     WSGIPath: application:application
 
 - Option setting for AWS Elastic Beanstalk container specifies Python as the platform (This is specifically for Python containers; Docker has a different process).
-- Specify the WSGI path with the application name. This application should be your app.py filename, which is the entry point of your application.
+- Specify the WSGI path with the application name. This application should be your app.py filename (in case of Student Performance Prediction Project), which is the entry point of your application.
 - It is compulsory that inside this Python config file, you specify the entry point in the format application:application.
 
 2. However, I do not have an application.py file. So, I copied the code from app.py and created a new file named application.py just for deployment purposes. I pasted the same code there and removed debug=True because when deploying, debug mode should always be disabled.
@@ -19,4 +19,12 @@ option_settings:
 git add .
 git status
 git commit -m "Deployment Configuration"
+git push -u origin main
+
+
+AWS Elastic Beanstalk only supports certain Python platform versions, and since Python 3.8 is end-of-life, AWS doesn’t provide it anymore. That’s why i have to upgrade it to Python 3.10
+
+git add .
+git status
+git commit -m 'upgrade to python 3.10'
 git push -u origin main

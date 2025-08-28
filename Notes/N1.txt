@@ -11,7 +11,7 @@ In Anaconda prompt:
 In VS Code:
 
 1. Create a Conda Environment & Activate the Environment
-conda create -p  venv python==3.8 -y
+conda create -p  venv python==3.10 -y
 conda activate venv/
 
 2. Clone this entire repository, and ensure it (my working directory) is synchronized with GitHub to allow committing all our code.

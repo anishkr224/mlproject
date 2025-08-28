@@ -50,5 +50,3 @@ Traceback (most recent call last):
 __main__.CustomException: Error occurred in python script name [src/exception.py] line number [43] error message[division by zero]
 
 3. utils.py: Any common functionalities that are used across the entire application should be written in a utils.py file. This helps organize reusable code like helper functions in one place for better modularity and maintainability.
-
-
