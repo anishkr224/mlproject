@@ -22,7 +22,7 @@ git commit -m "Deployment Configuration"
 git push -u origin main
 
 
-AWS Elastic Beanstalk only supports certain Python platform versions, and since Python 3.8 is end-of-life, AWS doesn’t provide it anymore. That’s why i have to upgrade it to Python 3.10
+AWS Elastic Beanstalk only supports certain Python platform versions, and since Python 3.8 is end-of-life, AWS doesn’t provide it anymore. That’s why i need to upgrade it to Python 3.11
 
 git add .
 git status
